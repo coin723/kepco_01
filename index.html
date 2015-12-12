@@ -81,7 +81,7 @@
 						return yScale(d.PN);
 					})
 					.attr("height", function(d) {
-						return height - yScale(d.PN);
+						return height - yScale(d.PN - d.altAndNon);
 					})
 					.attr("fill", "#FFD34E");
 
