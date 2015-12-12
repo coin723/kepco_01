@@ -1,0 +1,17 @@
+body {
+	font-family: sans-serif;
+}
+
+.axis text {
+	font-size: 10px;
+
+}
+
+.axis path, .axis line {
+	fill: none;
+	stroke: #AAAAAA;
+}
+
+/*.bar rect {
+	fill: #FFD34E;
+}*/
