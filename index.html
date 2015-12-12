@@ -10,9 +10,9 @@
 		<script>
 			d3.csv("kepco_01.csv", function(data) {
 				data.forEach(function(d) {
-					d.PN = +d.PN;
-					d.public_GA = +d.public_GA;
-					d.nonUtil_sum = +d.nonUtil_sum;
+					Object.keys(d).forEach(function(element) {
+						d[element] = +d[element];
+					})
 				});
 
 				var margin = {top: 50, right: 50, bottom: 50, left: 75};
@@ -91,26 +91,23 @@
 					})
 					.attr("width", xScale.rangeBand())
 					.attr("y", function(d) {
-						var value = d.public_GA + d.nonUtil_sum;
-						return yScale(value);
+						return yScale(d.altAndNon);
 					})
 					.attr("height", function(d) {
-						var value = d.public_GA + d.nonUtil_sum;
-						return height - yScale(value);
+						return height - yScale(d.altAndNon);
 					})
 					.attr("fill", "#338833");
 
 				g_bar.append("text")
 					.text(function(d) {
-						var value = Math.round((d.public_GA + d.nonUtil_sum) * 10000 / d.PN) / 100;
+						var value = Math.round((d.altAndNon) * 10000 / d.PN) / 100;
 						return value + "%";
 					})
 					.attr("x", function(d) {
 						return xScale(d.year) + xScale.rangeBand() / 2;
 					})
 					.attr("y", function(d) {
-						var value = d.public_GA + d.nonUtil_sum;
-						return yScale(value);
+						return yScale(d.altAndNon);
 					})
 					.attr("text-anchor", "middle")
 					.attr("dy", "-5");
