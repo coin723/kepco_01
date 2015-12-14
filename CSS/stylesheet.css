@@ -12,11 +12,23 @@ body {
 	stroke: #AAAAAA;
 }
 
-/*.bar rect {
+.bar .PN {
 	fill: #FFD34E;
-}*/
+}
+
+.bar .alternative_full {
+	fill: #338833;
+}
+
+.bar .public_alternative {
+	fill: #338833;
+}
+
+.bar .public_hydro {
+	fill: #5634DD;
+}
 
 .bar text {
 	font-size: 12px;
-	fill: #333333;
+	fill: #003DC2;
 }

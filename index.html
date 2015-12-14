@@ -73,6 +73,7 @@
 					.attr("class", "bar");
 
 				g_bar.append("rect")
+					.attr("class", "PN")
 					.attr("x", function(d) {
 						return xScale(d.year);
 					})
@@ -81,33 +82,45 @@
 						return yScale(d.PN);
 					})
 					.attr("height", function(d) {
-						return height - yScale(d.PN - d.altAndNon);
-					})
-					.attr("fill", "#FFD34E");
+						return height - yScale(d.PN - d.alternative_full);
+					});
 
 				g_bar.append("rect")
+					.attr("class", "alternative_full")
 					.attr("x", function(d) {
 						return xScale(d.year);
 					})
 					.attr("width", xScale.rangeBand())
 					.attr("y", function(d) {
-						return yScale(d.altAndNon);
+						return yScale(d.alternative_full);
 					})
 					.attr("height", function(d) {
-						return height - yScale(d.altAndNon);
-					})
-					.attr("fill", "#338833");
+						return height - yScale(d.alternative_full);
+					});
+
+				// g_bar.append("rect")
+				// 	.attr("class", "public_hydro")
+				// 	.attr("x", function(d) {
+				// 		return xScale(d.year);
+				// 	})
+				// 	.attr("width", xScale.rangeBand())
+				// 	.attr("y", function(d) {
+				// 		return yScale(d.public_hydroGen + d.public_hydroMicro + d.public_alternative);
+				// 	})
+				// 	.attr("height", function(d) {
+				// 		return height - yScale(d.public_hydroGen + d.public_hydroMicro);
+				// 	});
 
 				g_bar.append("text")
 					.text(function(d) {
-						var value = Math.round((d.altAndNon) * 10000 / d.PN) / 100;
+						var value = Math.round((d.alternative_full) * 10000 / d.PN) / 100;
 						return value + "%";
 					})
 					.attr("x", function(d) {
 						return xScale(d.year) + xScale.rangeBand() / 2;
 					})
 					.attr("y", function(d) {
-						return yScale(d.altAndNon);
+						return yScale(d.alternative_full);
 					})
 					.attr("text-anchor", "middle")
 					.attr("dy", "-5");
